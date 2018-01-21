@@ -33,4 +33,7 @@
 /* Require FontConfig */
 #define CAIRO_HAS_FC_FONT 1
 
+/* EXPERIMENTAL OpenGL */
+#define CAIRO_HAS_GL_SURFACE 1
+
 #endif

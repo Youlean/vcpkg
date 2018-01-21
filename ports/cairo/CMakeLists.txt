@@ -146,12 +146,30 @@ file(GLOB SOURCES
 "cairo-script-surface.c"
 # fontconfig + freetype
 "cairo-ft-font.c"
+# EXPERIMENTAL OpenGL
+"cairo-gl-composite.c"
+"cairo-gl-device.c"
+"cairo-gl-dispatch.c"
+"cairo-gl-glyphs.c"
+"cairo-gl-gradient.c"
+"cairo-gl-info.c"
+"cairo-gl-msaa-compositor.c"
+"cairo-gl-operand.c"
+"cairo-gl-shaders.c"
+"cairo-gl-source.c"
+"cairo-gl-spans-compositor.c"
+"cairo-gl-surface.c"
+"cairo-gl-traps-compositor.c"
 )
 
 set(CMAKE_DEBUG_POSTFIX "d")
 
 find_package(ZLIB REQUIRED)
 find_package(PNG REQUIRED)
+
+# Add GLEW dependency for cairo OpenGL backend
+find_package(GLEW REQUIRED)
+find_library(GLEW NAMES glew32)
 
 # Make the pixman library available
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
@@ -176,7 +194,7 @@ add_library(cairo ${SOURCES})
 # cairo produces a lot of warnings which are disabled here because they otherwise fill up the log files
 target_compile_options(cairo PUBLIC "/wd4244" PUBLIC "/wd4146" PUBLIC "/wd4312" PUBLIC "/wd4267" 
                              PUBLIC "/wd4996" PUBLIC "/wd4311" PUBLIC "/wd4334" PUBLIC "/wd4101")
-target_link_libraries(cairo gdi32 msimg32 user32 ZLIB::ZLIB PNG::PNG freetype ${PIXMAN_LIBRARY} ${FONTCONFIG_LIBRARY})
+target_link_libraries(cairo gdi32 msimg32 user32 ZLIB::ZLIB PNG::PNG freetype glew32 ${PIXMAN_LIBRARY} ${FONTCONFIG_LIBRARY})
 
 install(TARGETS cairo
   RUNTIME DESTINATION bin

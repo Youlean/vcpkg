@@ -43,7 +43,8 @@ foreach(FILE
 "${SOURCE_PATH}/cairo-version.h"
 "${SOURCE_PATH}/src/cairo-win32.h"
 "${SOURCE_PATH}/util/cairo-gobject/cairo-gobject.h"
-"${SOURCE_PATH}/src/cairo-ft.h")
+"${SOURCE_PATH}/src/cairo-ft.h"
+"${SOURCE_PATH}/src/cairo-gl.h")
   file(COPY ${FILE} DESTINATION ${CURRENT_PACKAGES_DIR}/include)
   file(COPY ${FILE} DESTINATION ${CURRENT_PACKAGES_DIR}/include/cairo)
 endforeach()
