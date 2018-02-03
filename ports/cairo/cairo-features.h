@@ -34,6 +34,8 @@
 #define CAIRO_HAS_FC_FONT 1
 
 /* EXPERIMENTAL OpenGL */
+#include <GL\glew.h>
 #define CAIRO_HAS_GL_SURFACE 1
+#define CAIRO_HAS_WGL_FUNCTIONS 1
 
 #endif
